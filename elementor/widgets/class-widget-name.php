@@ -74,28 +74,34 @@ class Latest_Posts_Widget extends Widget_Base
             ]
         );
 
-
         $this->add_control(
-            'show_author',
+            'dropdown',
             [
-                'label' => esc_html__('Show Author', PE_PLUGIN_DOMAIN),
-                'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label_on' => esc_html__('Show', PE_PLUGIN_DOMAIN),
-                'label_off' => esc_html__('Hide', PE_PLUGIN_DOMAIN),
-                'return_value' => 'yes',
-                'default' => 'yes',
+                'label' => esc_html__('Styles', PE_PLUGIN_DOMAIN),
+                'type' => Controls_Manager::SELECT,
+                'options' => [
+                    'Style1' => esc_html__('Style1', PE_PLUGIN_DOMAIN),
+                    'Style2' => esc_html__('Style2', PE_PLUGIN_DOMAIN),
+                ],
+                'default' => 'Style1',
             ]
         );
 
         $this->add_control(
-            'show_ratings',
+            'quantity',
             [
-                'label' => esc_html__('Show Ratings', PE_PLUGIN_DOMAIN),
-                'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label_on' => esc_html__('Show', PE_PLUGIN_DOMAIN),
-                'label_off' => esc_html__('Hide', PE_PLUGIN_DOMAIN),
-                'return_value' => 'yes',
-                'default' => 'yes',
+                'label' => esc_html__('Quantity', PE_PLUGIN_DOMAIN),
+                'type' => Controls_Manager::NUMBER,
+                'default' => '3',
+            ]
+        );
+
+        $this->add_control(
+            'timer',
+            [
+                'label' => esc_html__('Timer', PE_PLUGIN_DOMAIN),
+                'type' => Controls_Manager::TEXT,
+                'default' => '',
             ]
         );
 
@@ -107,15 +113,10 @@ class Latest_Posts_Widget extends Widget_Base
     {
         $settings = $this->get_settings_for_display();
 
-        $show_ratings = $settings['show_ratings'];
-        $show_author = $settings['show_author'];
         $course_ids = $settings['course_ids'];
-
-        $id = explode(",", $course_ids);
-        $args = array(
-            'post__in' => $id,
-            'post_type' => 'course',
-        );
+        $styles = $settings['dropdown'];
+        $quantity = $settings['quantity'];
+        $timer = $settings['timer'];
 
 
 ?>
@@ -123,57 +124,104 @@ class Latest_Posts_Widget extends Widget_Base
         <div class="row">
 
             <?php
+            $course_ID = explode(",", $course_ids);
+            $args = array(
+                'post_type' => 'course',
+                'post_status' => 'publish',
+                'posts_per_page' => $quantity,
+                'post__in' => $course_ID,
+                'orderby'        => 'post__in'
+            );
+
             $loop = new WP_Query($args);
+
             while ($loop->have_posts()) : $loop->the_post();
+
             ?>
-                <div class="col-md-4">
-                    <div class="feature-course-item-2">
-                        <a class="c-cate" href="#"><?php the_title(); ?></a>
-                        <h4 class="title"><a href="#"> <?php the_title(); ?> </a></h4>
-                        <div class="fcf-bottom">
-                            <a class="bisy-lesson" href="#"><i class="fa fa-book"></i> 20 Lessons</a>
-                            <a class="bisy-students" href="#"><i class="fa fa-user"></i> 4 </a>
-                        </div>
-                        <div class="fcf-thumb">
-                            <img src="https://wp.quomodosoft.com/bisy/wp-content/uploads/2020/11/h2_course_image.svg" alt="Using Creative Problem Solving Ideas.">
-                        </div>
-                        <div class="hover-course">
-                            <div class="course-price">
-                                $80.00
-                                <span> $120.00 </span>
+                <div class="col-md-3">
+                    <div class="course-cart1">
+
+                        <div class="course-img">
+                            <img src="<?php echo get_the_post_thumbnail_url(); ?>" alt="">
+                            <div class="view-more-link">
+                                <a href="<?php echo get_the_permalink(); ?>"><i class="fa fa-eye" aria-hidden="true"></i>View More</a>
                             </div>
-                            <?php
-                            if (!empty($show_author)) {
-                            ?>
-                                <div class="author">
-                                    <img src="https://secure.gravatar.com/avatar/e1ad28c7da63a709b0621fc230dd6797?s=96&amp;d=mm&amp;r=g">
-                                    <a href="#"><span>Dianne Ameter</span></a>
-                                </div>
-                            <?php
-                            }
-                            ?>
+                        </div>
+                        <div class="course-content">
+                            <h3 class="title"> <a href="<?php echo get_the_permalink(); ?>"><?php echo get_the_title(); ?></a></h3>
+                            <div class="students">
+                                <img src="https://www.oneeducation.org.uk/wp-content/uploads/2022/05/Group-10-2-1.png" alt="" class="img-icon">
+                                <span><?php bp_course_count_students_pursuing(get_the_ID()); ?>4857</span>
+                                <img src="https://www.oneeducation.org.uk/wp-content/uploads/2022/05/Star-Ratings.png" alt="" class="rating">
+                                <div class="oneEduTimer">
 
-                            <?php
-                            if (!empty($show_ratings)) {
-                            ?>
-                                <div class="ratings">
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <span>0 (0 Reviews)</span>
+                                    <?php if ($timer) {
+                                    ?>
+                                        <img src="<?php echo $timer; ?>" alt="timer" style="display: block;" />
+                                    <?php
+                                    }
+                                    ?>
                                 </div>
-                            <?php
-                            }
-                            ?>
+                                <div class="course-btn-div">
+                                    <?php
 
+                                    $product_id = get_post_meta(get_the_ID(), 'vibe_product', true);
+
+                                    $currency_symble = get_woocommerce_currency_symbol();
+                                    $price = get_post_meta($product_id, '_regular_price', true);
+                                    $sale = get_post_meta($product_id, '_sale_price', true);
+
+                                    if (!bp_is_my_profile()) {
+
+                                        if (!empty($sale)) {
+                                    ?>
+                                            <div class="offer-bg">
+                                                <img src="https://www.oneeducation.org.uk/wp-content/uploads/2022/05/Group-9547-1.png" alt="">
+                                                <strong>
+                                                    <del><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"><?php echo $currency_symble; ?></span><?php echo $price; ?></span></del>
+                                                    <ins><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"><?php echo $currency_symble; ?></span><?php echo $sale; ?></span></ins>
+                                                </strong>
+                                            </div>
+                                        <?php
+                                        } elseif (empty($sale) && !empty($price)) {
+                                        ?>
+                                            <div class="offer-bg">
+                                                <img src="https://www.oneeducation.org.uk/wp-content/uploads/2022/05/Group-9547-1.png" alt="">
+                                                <strong>
+                                                    <ins><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"><?php echo $currency_symble; ?></span><?php echo $price; ?></span></ins>
+                                                </strong>
+                                            </div>
+                                        <?php
+                                        } elseif (empty($sale) && empty($price)) {
+                                        ?>
+                                            <div class="offer-bg">
+                                                <img src="https://www.oneeducation.org.uk/wp-content/uploads/2022/05/Group-9547-1.png" alt="">
+                                                <strong>
+                                                    <ins><span class="woocommerce-Price-amount amount">free</span></ins>
+                                                </strong>
+                                            </div>
+                                        <?php
+                                        }
+                                        ?>
+                                        <a class="view-details" href="<?php echo get_site_url();  ?>/cart/?add-to-cart=<?php echo $product_id; ?>">Add to Cart</a>
+                                        <br>
+                                        <!-- <a class="sa-more-info" href="<?php echo get_the_permalink(get_the_ID());  ?>">More Info</a> -->
+                                    <?php
+
+                                    } else {
+                                        the_course_button(get_the_ID());
+                                    }
+
+                                    ?>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
             <?php
             endwhile;
+            wp_reset_postdata();
 
             ?>
 
