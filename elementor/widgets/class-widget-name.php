@@ -60,7 +60,7 @@ class Latest_Posts_Widget extends Widget_Base
         $this->start_controls_section(
             'content_section',
             [
-                'label' => esc_html__('Latest Posts', PE_PLUGIN_DOMAIN),
+                'label' => esc_html__('Dynamic Course Assign', PE_PLUGIN_DOMAIN),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -105,6 +105,18 @@ class Latest_Posts_Widget extends Widget_Base
             ]
         );
 
+        $this->add_control(
+            'show_students',
+            [
+                'label' => esc_html__('Show Students', PE_PLUGIN_DOMAIN),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Show', PE_PLUGIN_DOMAIN),
+                'label_off' => esc_html__('Hide', PE_PLUGIN_DOMAIN),
+                'return_value' => 'yes',
+                'default' => 'yes',
+            ]
+        );
+
 
         $this->end_controls_section();
     }
@@ -117,6 +129,8 @@ class Latest_Posts_Widget extends Widget_Base
         $styles = $settings['dropdown'];
         $quantity = $settings['quantity'];
         $timer = $settings['timer'];
+        $student = $settings['show_students'];
+
 
 
 ?>
@@ -144,15 +158,45 @@ class Latest_Posts_Widget extends Widget_Base
                         <div class="course-img">
                             <img src="<?php echo get_the_post_thumbnail_url(); ?>" alt="">
                             <div class="view-more-link">
-                                <a href="<?php echo get_the_permalink(); ?>"><i class="fa fa-eye" aria-hidden="true"></i>View More</a>
+                                <a href="<?php echo get_the_permalink(); ?>"><i class="fa fa-eye" aria-hidd3en="true"></i>View More</a>
                             </div>
                         </div>
                         <div class="course-content">
                             <h3 class="title"> <a href="<?php echo get_the_permalink(); ?>"><?php echo get_the_title(); ?></a></h3>
                             <div class="students">
-                                <img src="https://www.oneeducation.org.uk/wp-content/uploads/2022/05/Group-10-2-1.png" alt="" class="img-icon">
-                                <span><?php bp_course_count_students_pursuing(get_the_ID()); ?>4857</span>
-                                <img src="https://www.oneeducation.org.uk/wp-content/uploads/2022/05/Star-Ratings.png" alt="" class="rating">
+                                <div class="<?php echo $student ? "for-sandah-flexing" :"for-sandah-center" ;?>">
+
+                                <?php if($student){ ?>
+                                    <div class="s-icon">
+                                        <img src="https://www.oneeducation.org.uk/wp-content/uploads/2022/05/Group-10-2-1.png" alt="" class="img-icon">
+                                        <span>
+                                            <?php 
+                                               echo get_post_meta(get_the_ID(), 'vibe_students', true);
+                                             ?>
+                                        </span>
+                                    </div>
+                                <?php 
+                                } ?>
+                                    <?php $average_rating = get_post_meta(get_the_ID(), 'average_rating', true); ?>
+                                    <div class="rating_sh_content">
+                                        <div class="sh_rating">
+                                            <div class="sh_rating-upper" style="width:<?php echo $average_rating ? 20 * $average_rating : 0; ?>%">
+                                                <span>★</span>
+                                                <span>★</span>
+                                                <span>★</span>
+                                                <span>★</span>
+                                                <span>★</span>
+                                            </div>
+                                            <div class="sh_rating-lower">
+                                                <span>★</span>
+                                                <span>★</span>
+                                                <span>★</span>
+                                                <span>★</span>
+                                                <span>★</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="oneEduTimer">
 
                                     <?php if ($timer) {

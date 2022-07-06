@@ -6,7 +6,7 @@
  * @category   Class
  * @package    PEElementor
  * @subpackage WordPress
- * @license    https://opensource.org/licenses/GPL-3.0 GPL-3.0-only
+ * @license    
  * @since      1.9.2
  * php version 7.3.9
  */

@@ -8,7 +8,7 @@
  * Plugin Name: LMS Ronan
  * Version:     1.9.2
  * Description: The first true all-in-one solutions manager for WordPress, including page content creation, plugin development, sitemaps and much more.
- * Author:      Projects Engine
+ * Author:      Ronan
  * Text Domain: projects-engine-plugin
  * Domain Path: /languages/
  * License:     GPL v3
