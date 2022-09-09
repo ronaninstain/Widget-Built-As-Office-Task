@@ -65,6 +65,7 @@ class PE_Elementor_Widget
 	{
 		wp_enqueue_script('owl-js', PE_PLUGIN_URL . 'elementor/assets/js/owl.carousel.min.js', array('jquery'), false, true);
 		wp_enqueue_script('projects-engine', PE_PLUGIN_URL . 'elementor/assets/js/projects-engine.js', array('jquery', 'owl-js'), time(), true);
+		wp_enqueue_script('projects-Popup', PE_PLUGIN_URL . 'elementor/assets/js/project-popup.js', array('jquery'), time(), true);
 	}
 
 	/**

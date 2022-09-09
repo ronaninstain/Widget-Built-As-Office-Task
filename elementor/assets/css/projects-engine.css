@@ -1,25 +1,36 @@
-.course-img img {
+.course-cart1 .course-img img {
   width: 100%;
 }
 .course-cart1 {
   border-radius: 30px;
   box-shadow: 3px 2px 30px rgba(0, 0, 0, 0.05);
   max-width: 420px;
-  margin: 10px 0;
+  margin: 10px auto;
 }
-.course-img img {
+.course-cart1 .course-img {
+  max-height: 155px !important;
+}
+.course-cart1 .course-img img {
   border-radius: 30px 30px 0 0 !important;
 }
-img.img-icon {
+.course-content .s-icon img.img-icon {
   padding-left: 15px;
 }
-h3.title {
+.course-cart1 .course-content h3.title a {
   font-size: 15px;
   font-weight: 600;
   font-family: "Poppings";
   padding: 15px;
   line-height: 21px;
   height: 60px;
+  display: block;
+  display: -webkit-box;
+  width: 100%;
+  margin: 0 auto;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 h3.title a {
   color: #303030;
@@ -42,8 +53,8 @@ h3.title a:hover {
 }
 .offer-bg {
   position: absolute;
-  top: 30px;
-  left: -5px;
+  /* top: 30px;
+  left: -5px; */
 }
 .offer-bg span {
   position: absolute;
@@ -55,31 +66,34 @@ h3.title a:hover {
   font-weight: bold !important;
 }
 .offer-bg strong del .woocommerce-Price-amount {
-  font-size: 12px !important;
-  top: 13px !important;
+  top: 20px !important;
+  font-size: 11px !important;
+  color: #000 !important;
 }
 .offer-bg strong del .woocommerce-Price-currencySymbol {
-  left: -9px;
-  top: -1px !important;
-  font-size: 12px !important;
+  left: -7px;
+  top: 0px !important;
+  font-size: 11px !important;
+  color: #000 !important;
 }
 .offer-bg strong ins .woocommerce-Price-amount {
-  font-size: 18px !important;
-  left: 55px;
-  top: 12px !important;
+  font-size: 16px !important;
+  left: 65px;
+  top: 15px !important;
 }
 .offer-bg strong ins .woocommerce-Price-currencySymbol {
-  left: -15px;
-  font-size: 18px !important;
-  top: -1px !important;
+  left: -10px;
+  font-size: 16px !important;
+  top: 0px !important;
 }
 
 .course-content .for-sandah-flexing {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  margin: 5px 10px 5px 0;
+  align-items: baseline;
+  margin: 5px 15px 5px 0;
+  flex-wrap: wrap !important;
 }
 
 .rating_sh_content .sh_rating {
@@ -124,7 +138,7 @@ a.view-details {
   font-weight: 600;
   color: rgba(48, 48, 48, 0.5);
   box-shadow: 3px 2px 30px rgba(0, 0, 0, 0.05),
-    inset 0px 0px 3px rgba(0, 0, 0, 0.25);
+    inset 0px 0px 3px rgba(0, 0, 0, 0.25) !important;
   text-decoration: none;
   text-align: right;
   display: inline-block;
@@ -135,7 +149,8 @@ a.view-details {
 }
 a.view-details:hover {
   color: #ed4266;
-  transition: 1s;
+  transition: 0.3s !important;
+  border: 1px solid #ed4266 !important;
 }
 /* .students span {
   font-size: 12px;
@@ -151,15 +166,12 @@ span.offer-price {
   left: 35px;
 }
 
-.course-img {
+.course-cart1 .course-img {
   position: relative;
   overflow: hidden;
 }
 
-.course-img img {
-  width: 100%;
-}
-.course-img:hover .view-more-link {
+.course-cart1 .course-img:hover .view-more-link {
   transform: scale(1);
 }
 .view-more-link {
@@ -201,11 +213,11 @@ span.offer-price {
   padding: 10px 15px;
   border-radius: 30px;
 }
-.course-img:hover .view-more-link a {
+.course-cart1 .course-img:hover .view-more-link a {
   background: #fff;
 }
 
-.course-img:hover .view-more-link i {
+.course-cart1 .course-img:hover .view-more-link i {
   background: #fff;
   color: #ed4266;
 }
@@ -226,12 +238,21 @@ span.offer-price {
   font-size: 12px;
 }
 @media (min-width: 768px) and (max-width: 1023px) {
+  /* .offer-bg img {
+    width: 100%;
+  } */
   .offer-bg img {
     width: 100%;
   }
-  .offer-bg {
-    top: 25px;
+  a.view-details {
+    background: #fafdfd;
+    padding: 15px 23px;
+    font-size: 10px;
+    /* border: 1px solid #000; */
   }
+  /* .offer-bg {
+    top: 25px;
+  } */
   .oneEduTimer img {
     max-width: 100%;
     margin: 10px auto;
@@ -239,6 +260,30 @@ span.offer-price {
   }
 }
 
+@media (min-width: 992px) and (max-width: 1199px) {
+  a.view-details {
+    padding: 18px 22px;
+    margin-right: 3px;
+    font-size: 8px;
+  }
+}
+
+.offer-bg del:before {
+  width: 42px;
+  height: 1px;
+  background: black;
+  position: absolute;
+  content: "";
+  left: 6px;
+  top: 27px;
+  z-index: 9;
+  transform: rotate(-16deg);
+}
+.offer-bg del {
+  opacity: 1 !important;
+}
+
+/* Bundle COurse CSS */
 /* Sliders Css */
 
 .career-bundles-single {
@@ -414,10 +459,624 @@ span.offer-price {
   transition: 0.3s;
 }
 
+.bundle-course-amm span {
+  color: #ed4266;
+}
+
 @media (min-width: 320px) and (max-width: 767px) {
   .bundle-course-reviews a {
     padding: 10px 17px;
     font-size: 7px;
     display: block;
+  }
+}
+
+.athc-buntton a {
+  background: transparent;
+  padding: 10px 15px;
+  font-size: 15px;
+  line-height: 15px;
+  border-radius: 30px;
+  color: #000;
+  font-weight: 500;
+  font-family: "Poppins";
+  border: 1px solid #ed4266;
+  transition: 0.3s;
+  text-transform: capitalize;
+}
+
+.Sh-bundle-area .career-bundles-single {
+  max-width: 385px;
+  max-height: 473px;
+}
+.Sh-bundle-area
+  .career-bundles-single
+  .bundle-content
+  .bundle-course-features
+  dd
+  li {
+  font-size: 12px;
+  line-height: 22px;
+  font-weight: 600;
+  color: #2b354e;
+  font-family: "Inter";
+}
+.Sh-bundle-area .bundle-course-price .bundle-course-amm span.amount {
+  color: #eb5b77;
+}
+.Sh-bundle-area .bundle-course-reviews a:hover {
+  color: #ed4266;
+  background: #fff;
+}
+
+/*Search bar css*/
+
+/*Style1*/
+
+/* Add a black background color to the top navigation bar */
+.style-1 .topnav {
+  overflow: hidden;
+  background-color: #e9e9e9;
+}
+
+/* Style the links inside the navigation bar */
+.style-1 .topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.style-1 .topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Style the "active" element to highlight the current page */
+.style-1 .topnav a.active {
+  background-color: #2196f3;
+  color: white;
+}
+
+/* Style the search box inside the navigation bar */
+.style-1 .topnav input[type="text"] {
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+}
+
+/* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
+@media screen and (max-width: 600px) {
+  .style-1 .topnav a,
+  .style-1 .topnav input[type="text"] {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .style-1 .topnav input[type="text"] {
+    border: 1px solid #ccc;
+  }
+}
+
+/* Style 2 */
+
+.style-2 .search-box {
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+}
+.style-2 .input-search {
+  height: 50px;
+  width: 50px;
+  border-style: none;
+  padding: 10px;
+  font-size: 18px;
+  letter-spacing: 2px;
+  outline: none;
+  border-radius: 25px;
+  transition: all 0.5s ease-in-out;
+  background-color: #22a6b3;
+  padding-right: 40px;
+  color: #fff;
+}
+.style-2 .input-search::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 18px;
+  letter-spacing: 2px;
+  font-weight: 100;
+}
+.style-2 .btn-search {
+  width: 50px;
+  height: 50px;
+  border-style: none;
+  font-size: 20px;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  right: 0px;
+  color: #ffffff;
+  background-color: transparent;
+  pointer-events: painted;
+}
+.style-2 .btn-search:focus ~ .input-search {
+  width: 300px;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
+}
+.style-2 .input-search:focus {
+  width: 300px;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
+}
+
+/* Style 3 */
+
+.style-3 .box {
+  position: relative;
+}
+
+.style-3 .input {
+  padding: 10px;
+  width: 80px;
+  height: 80px;
+  background: none;
+  border: 4px solid #ffd52d;
+  border-radius: 50px;
+  box-sizing: border-box;
+  font-family: Comic Sans MS;
+  font-size: 26px;
+  color: #ffd52d;
+  outline: none;
+  transition: 0.5s;
+}
+.style-3 .box:hover input {
+  width: 350px;
+  background: #3b3640;
+  border-radius: 10px;
+}
+.style-3 .box i {
+  position: absolute;
+  transform: translate(100%, 100%);
+  font-size: 26px;
+  color: #ffd52d;
+  transition: 0.2s;
+  top: 0;
+  left: 0;
+}
+.style-3 .box:hover i {
+  opacity: 0;
+  z-index: -1;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .style-3 .box:hover input {
+    width: 250px;
+    background: #3b3640;
+    border-radius: 10px;
+  }
+}
+
+/* Style 4 */
+
+.style-4 #wrap {
+  margin: 50px 100px;
+  display: inline-block;
+  position: relative;
+  height: 60px;
+  float: right;
+  padding: 0;
+  position: relative;
+}
+
+.style-4 input[type="text"] {
+  height: 60px;
+  font-size: 55px;
+  display: inline-block;
+  font-family: "Lato";
+  font-weight: 100;
+  border: none;
+  outline: none;
+  color: #555;
+  padding: 3px;
+  padding-right: 60px;
+  width: 0px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: none;
+  z-index: 3;
+  transition: width 0.4s cubic-bezier(0, 0.795, 0, 1);
+  cursor: pointer;
+}
+
+.style-4 input[type="text"]:focus:hover {
+  border-bottom: 1px solid #bbb;
+}
+
+.style-4 input[type="text"]:focus {
+  width: 700px;
+  z-index: 1;
+  border-bottom: 1px solid #bbb;
+  cursor: text;
+}
+.style-4 input[type="submit"] {
+  height: 67px;
+  width: 63px;
+  display: inline-block;
+  color: red;
+  float: right;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADNQTFRFU1NT9fX1lJSUXl5e1dXVfn5+c3Nz6urqv7+/tLS0iYmJqampn5+fysrK39/faWlp////Vi4ZywAAABF0Uk5T/////////////////////wAlrZliAAABLklEQVR42rSWWRbDIAhFHeOUtN3/ags1zaA4cHrKZ8JFRHwoXkwTvwGP1Qo0bYObAPwiLmbNAHBWFBZlD9j0JxflDViIObNHG/Do8PRHTJk0TezAhv7qloK0JJEBh+F8+U/hopIELOWfiZUCDOZD1RADOQKA75oq4cvVkcT+OdHnqqpQCITWAjnWVgGQUWz12lJuGwGoaWgBKzRVBcCypgUkOAoWgBX/L0CmxN40u6xwcIJ1cOzWYDffp3axsQOyvdkXiH9FKRFwPRHYZUaXMgPLeiW7QhbDRciyLXJaKheCuLbiVoqx1DVRyH26yb0hsuoOFEPsoz+BVE0MRlZNjGZcRQyHYkmMp2hBTIzdkzCTc/pLqOnBrk7/yZdAOq/q5NPBH1f7x7fGP4C3AAMAQrhzX9zhcGsAAAAASUVORK5CYII=)
+    center center no-repeat;
+  text-indent: -10000px;
+  border: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  cursor: pointer;
+  opacity: 0.4;
+  cursor: pointer;
+  transition: opacity 0.4s ease;
+}
+
+.style-4 input[type="submit"]:hover {
+  opacity: 0.8;
+}
+
+/* Style 5 */
+
+.style-5 .search {
+  border: 2px solid #cf5c3f;
+  overflow: auto;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
+.style-5 .search input[type="text"] {
+  border: 0px;
+  width: 67%;
+  padding: 10px 10px;
+}
+
+.style-5 .search input[type="text"]:focus {
+  outline: 0;
+}
+
+.style-5 .search input[type="submit"] {
+  border: 0px;
+  background: none;
+  background-color: #cf5c3f;
+  color: #fff;
+  float: right;
+  padding: 10px;
+  border-radius-top-right: 5px;
+  -moz-border-radius-top-right: 5px;
+  -webkit-border-radius-top-right: 5px;
+  border-radius-bottom-right: 5px;
+  -moz-border-radius-bottom-right: 5px;
+  -webkit-border-radius-bottom-right: 5px;
+  cursor: pointer;
+}
+
+/* ===========================
+   ====== Medua Query for Search Box ====== 
+   =========================== */
+
+@media only screen and (min-width: 150px) and (max-width: 780px) {
+  .style-5 .search {
+    width: 95%;
+    margin: 0 auto;
+  }
+}
+
+/* Style 6 */
+
+.style-6 .search-icon,
+.style-6 .exit-icon {
+  color: $white;
+}
+.style-6 .exit-icon {
+  display: none;
+}
+.style-6 .search:checked + .style-5 .search-label {
+  .search-icon {
+    display: none;
+  }
+  .style-6 .exit-icon {
+    display: block;
+  }
+}
+.style-6 .search-section {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+  transition: 0.5s all ease-in-out;
+}
+.style-6 .search-box {
+  background: $old_grey_alpa;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.style-6 .search-input {
+  width: 70%;
+  border: 2px solid $white;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  .input-textarea {
+    position: relative;
+    background: transparent;
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    color: white;
+    z-index: 2;
+    border: none;
+    cursor: pointer;
+    font-family: $montserrat;
+  }
+  span {
+    margin-right: 10px;
+  }
+}
+.style-6 .open {
+  opacity: 1;
+  z-index: 0;
+  transition: 0.5s all ease-in-out;
+}
+
+/* Style 7 */
+
+.style-7 .searchBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  background: #2f3640;
+  height: 50px;
+  border-radius: 50px;
+  padding: 10px;
+}
+
+.style-7 .searchBox:hover > .searchInput {
+  width: 250px;
+  padding: 0 6px;
+}
+
+.style-7 .searchBox:hover > .searchButton {
+  background: #fff;
+  color: #2f3640;
+}
+
+.style-7 .searchButton {
+  color: white;
+  float: right;
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  border-radius: 50%;
+  background: #2f3640;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+}
+
+.style-7 .searchInput {
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  color: white;
+  font-size: 16px;
+  transition: 0.4s;
+  line-height: 50px;
+  width: 0px;
+}
+
+@media screen and (max-width: 620px) {
+  .style-7 .searchBox:hover > .style-7 .searchInput {
+    width: 150px;
+    padding: 0 6px;
+  }
+}
+
+/* KingStone Dynamic Course Css */
+
+.sh-if-dy-ks-needs-flexing {
+  margin: 10px auto;
+  background: #ffffff;
+  box-shadow: 0px 8.76923px 17.5385px rgba(181, 204, 255, 0.45);
+  border-radius: 10.9615px;
+  max-width: 1170px;
+  padding: 20px 15px;
+}
+
+.sh-ks-image-dy-c img {
+  max-width: 320px !important;
+  border-radius: 8px !important;
+}
+
+.for-flexing-inner-section-sh-dy-course-ks {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+}
+
+.sh-ks-title-dynamic-course a {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 34px;
+  color: #221638;
+}
+
+.sh-ks-title-dynamic-course a:hover {
+  color: #fe4a55;
+}
+
+.sh-dynamic-course-ks-content-price span {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 35px;
+  /* identical to box height */
+  text-transform: capitalize;
+  color: #39a1b8;
+}
+
+.sh-dynamic-course-ks-content-price span del {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 24px;
+  /* identical to box height */
+  text-decoration-line: line-through;
+  text-transform: capitalize;
+  color: rgba(57, 161, 184, 0.5);
+  margin-right: 10px;
+}
+
+.sh-units-students-ks span {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 19px;
+  text-transform: capitalize;
+  color: #7e7a86;
+  margin: 5px;
+}
+
+.sh-for-flexing-units-and-ctas {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+
+.sh-kstone-ctas a {
+  text-decoration: none;
+}
+
+.sh-kstone-ctas {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  margin: 10px 0;
+}
+
+.sh-kstone-ctas .view-details a,
+.sh-kstone-ctas .add-to-cart a {
+  /* text-decoration: none; */
+  font-family: "Roboto";
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 16px;
+  padding: 12px 25px;
+  border-radius: 5px;
+  text-transform: capitalize;
+  width: 210px;
+  height: 50px;
+  margin-left: 10px;
+}
+
+.sh-kstone-ctas .view-details a {
+  color: #221638;
+  background: #dce6e9;
+}
+
+.sh-kstone-ctas .add-to-cart a {
+  color: #fff;
+  background: #39a1b8;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .sh-ks-title-dynamic-course a {
+    font-size: 15px;
+    line-height: 22px;
+  }
+  .sh-if-dy-ks-needs-flexing {
+    max-width: 768px;
+    padding: 12px 13px;
+  }
+
+  .sh-ks-image-dy-c img {
+    max-width: 95%;
+  }
+
+  .sh-kstone-ctas .view-details a,
+  .sh-kstone-ctas .add-to-cart a {
+    /* text-decoration: none; */
+    font-size: 11px;
+    line-height: 16px;
+    padding: 10px 20px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .sh-if-dy-ks-needs-flexing {
+    max-width: 320px;
+  }
+  .for-flexing-inner-section-sh-dy-course-ks {
+    flex-direction: column;
+  }
+  .sh-ks-title-dynamic-course a {
+    font-size: 15px;
+    line-height: 20px;
+  }
+  .sh-ks-image-dy-c img {
+    max-width: 100%;
+  }
+  .sh-dynamic-course-ks-content-price span {
+    font-size: 20px;
+    line-height: 30px;
+  }
+  .sh-dynamic-course-ks-content-price span del {
+    font-size: 14px;
+    line-height: 21px;
+  }
+  .sh-for-flexing-units-and-ctas {
+    flex-direction: column;
+  }
+  .sh-kstone-ctas {
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .sh-kstone-ctas .view-details a,
+  .sh-kstone-ctas .add-to-cart a {
+    line-height: 54px;
+    padding: 10px 22px;
   }
 }

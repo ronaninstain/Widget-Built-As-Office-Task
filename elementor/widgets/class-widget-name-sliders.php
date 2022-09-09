@@ -93,6 +93,17 @@ class Latest_Posts_Widget_Sliders extends Widget_Base
                 'default' => 'yes',
             ]
         );
+        $this->add_control(
+            'show_button',
+            [
+                'label' => esc_html__('Show Button', PE_PLUGIN_DOMAIN),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Show', PE_PLUGIN_DOMAIN),
+                'label_off' => esc_html__('Hide', PE_PLUGIN_DOMAIN),
+                'return_value' => 'yes',
+                'default' => 'yes',
+            ]
+        );
 
 
         $repeater = new \Elementor\Repeater();
@@ -148,6 +159,7 @@ class Latest_Posts_Widget_Sliders extends Widget_Base
         $quantity = $settings['quantity'];
         $student = $settings['show_students'];
         $list = $settings['list'];
+        $button = $settings['show_button'];
 
 
 
@@ -242,6 +254,13 @@ class Latest_Posts_Widget_Sliders extends Widget_Base
                                             ?>
                                         </div>
                                     <?php } ?>
+                                    <?php
+                                    if ($button) { ?>
+                                        <div class="athc-buntton">
+                                            <a href="https://www.oneeducation.org.uk/regulated-courses-enquiry/">Enquire Now</a>
+                                        </div>
+                                    <?php } ?>
+
                                 </div>
                                 <div class="bundle-course-reviews">
                                     <?php $average_rating = get_post_meta(get_the_ID(), 'average_rating', true); ?>

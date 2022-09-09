@@ -164,19 +164,19 @@ class Latest_Posts_Widget extends Widget_Base
                         <div class="course-content">
                             <h3 class="title"> <a href="<?php echo get_the_permalink(); ?>"><?php echo get_the_title(); ?></a></h3>
                             <div class="students">
-                                <div class="<?php echo $student ? "for-sandah-flexing" :"for-sandah-center" ;?>">
+                                <div class="<?php echo $student ? "for-sandah-flexing" : "for-sandah-center"; ?>">
 
-                                <?php if($student){ ?>
-                                    <div class="s-icon">
-                                        <img src="https://www.oneeducation.org.uk/wp-content/uploads/2022/05/Group-10-2-1.png" alt="" class="img-icon">
-                                        <span>
-                                            <?php 
-                                               echo get_post_meta(get_the_ID(), 'vibe_students', true);
-                                             ?>
-                                        </span>
-                                    </div>
-                                <?php 
-                                } ?>
+                                    <?php if ($student) { ?>
+                                        <div class="s-icon">
+                                            <img src="https://www.oneeducation.org.uk/wp-content/uploads/2022/05/Group-10-2-1.png" alt="" class="img-icon">
+                                            <span>
+                                                <?php
+                                                echo get_post_meta(get_the_ID(), 'vibe_students', true);
+                                                ?>
+                                            </span>
+                                        </div>
+                                    <?php
+                                    } ?>
                                     <?php $average_rating = get_post_meta(get_the_ID(), 'average_rating', true); ?>
                                     <div class="rating_sh_content">
                                         <div class="sh_rating">
