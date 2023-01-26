@@ -170,25 +170,26 @@ class kStone_Dynamic_Course extends Widget_Base
                                 ?>
                                 <!-- <span><del>£409</del>£219</span> -->
                             </div>
-                            <div class="sh-for-flexing-units-and-ctas">
-                                <div class="sh-units-students-ks">
-                                    <span><i class="fa fa-file-text" aria-hidden="true"></i>
-                                        <?php
-                                        $unit = bp_course_get_curriculum_units(get_the_ID());
-                                         echo count($unit);
-                                        ?></span>
-                                    <span><i class="fa fa-users" aria-hidden="true"></i>
-                                        <?php
-                                        echo get_post_meta(get_the_ID(), 'vibe_students', true);
-                                        ?></span>
+                            <div class="sh-units-students-ks">
+                                <span><i class="fa fa-file-text" aria-hidden="true"></i>
+                                    <?php
+                                    $unit = bp_course_get_curriculum_units(get_the_ID());
+                                    echo count($unit);
+                                    ?></span>
+                                <span><i class="fa fa-users" aria-hidden="true"></i>
+                                    <?php
+                                    echo get_post_meta(get_the_ID(), 'vibe_students', true);
+                                    ?></span>
+                            </div>
+                        </div>
+                        <div class="sh-for-flexing-units-and-ctas">
+
+                            <div class="sh-kstone-ctas">
+                                <div class="view-details">
+                                    <a href="<?php echo get_the_permalink(get_the_ID());  ?>">view details</a>
                                 </div>
-                                <div class="sh-kstone-ctas">
-                                    <div class="view-details">
-                                        <a href="<?php echo get_the_permalink(get_the_ID());  ?>">view details</a>
-                                    </div>
-                                    <div class="add-to-cart">
-                                        <a href="<?php echo get_site_url();  ?>/cart/?add-to-cart=<?php echo $product_id; ?>">add to cart</a>
-                                    </div>
+                                <div class="add-to-cart">
+                                    <a href="<?php echo get_site_url();  ?>/cart/?add-to-cart=<?php echo $product_id; ?>">add to cart</a>
                                 </div>
                             </div>
                         </div>
